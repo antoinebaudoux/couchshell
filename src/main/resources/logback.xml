@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- Support multiple-JVM writing to the same log file -->
+        <file>/tmp/shell.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/tmp/shell.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d [%-20.20thread] %-5level %50.50logger{50} | %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.taktik" level="INFO"/>
+    <root level="ERROR">
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
