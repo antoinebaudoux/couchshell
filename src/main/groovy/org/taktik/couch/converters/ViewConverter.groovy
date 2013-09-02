@@ -14,7 +14,7 @@ class ViewConverter implements Converter<String> {
 
 	@Override
 	boolean supports(Class<?> type, String optionContext) {
-		return type == String.class && optionContext.equals("couch-view")
+		return type.equals(String.class) && optionContext.equals("couch-view")
 	}
 
 	@Override
